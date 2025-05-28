@@ -1,0 +1,20 @@
+<form action="" [formGroup]="rolesForm">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+    <mat-error>
+      @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+      @if (nombre.hasError('required')) {
+      <div>El nombre es requerido.</div>
+      }
+      @if (nombre.hasError('maxlength')) {
+      <div>El nombre no puede exceder 50 caracteres.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <button matButton (click)="addRole()">Agregar rol</button>
+  @if (message.length != 0) {
+  <p>{{message}}</p>
+  }
+</form>

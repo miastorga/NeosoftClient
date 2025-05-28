@@ -1,0 +1,45 @@
+<form action="" [formGroup]="variableForm">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+    <mat-error>
+      @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+      @if (nombre.hasError('required')) {
+      <div>El nombre es requerido.</div>
+      }
+      @if (nombre.hasError('maxlength')) {
+      <div>El nombre no puede exceder 100 caracteres.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Valor</mat-label>
+    <input matInput formControlName="valor">
+    <mat-error>
+      @if (valor.invalid && (valor.dirty || valor.touched)) {
+      @if (valor.hasError('required')) {
+      <div>El valor es requerido.</div>
+      }
+      @if (valor.hasError('maxlength')) {
+      <div>El valor no puede exceder 100 caracteres.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <input matInput formControlName="tipo">
+    <mat-error>
+      @if (tipo.invalid && (tipo.dirty || tipo.touched)) {
+      @if (valor.hasError('required')) {
+      <div>tipo es requerido.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field> w
+  <button matButton (click)="addvariable()">Agregar usuario</button>
+  @if (message.length != 0) {
+  <p>{{message}}</p>
+  }
+</form>

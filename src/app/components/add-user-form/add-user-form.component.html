@@ -1,0 +1,52 @@
+<form action="" [formGroup]="userForm">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+    <mat-error>
+      @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
+      @if (nombre.hasError('required')) {
+      <div>El nombre es requerido.</div>
+      }
+      @if (nombre.hasError('maxlength')) {
+      <div>El nombre no puede exceder 100 caracteres.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+    <mat-error>
+      @if (email.invalid && (email.dirty || email.touched)) {
+      @if (email.hasError('required')) {
+      <div>El email es requerido.</div>
+      }
+      @if (email.hasError('email')) {
+      <div>Ingrese un email válido.</div>
+      }
+      @if (email.hasError('maxlength')) {
+      <div>El email no puede exceder 200 caracteres.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rol</mat-label>
+    <mat-select formControlName="rol">
+      @for (rol of rolesSignal(); track $index) {
+      <mat-option [value]="rol.id" matInput>{{rol.nombre}}</mat-option>
+      }
+    </mat-select>
+    <mat-error>
+      @if (rol.invalid && (rol.dirty || rol.touched)) {
+      @if (rol.hasError('required')) {
+      <div>Debe seleccionar un rol.</div>
+      }
+      }
+    </mat-error>
+  </mat-form-field>
+  <button matButton (click)="addUser()">Agregar usuario</button>
+  @if (message.length != 0) {
+  <p>{{message}}</p>
+  }
+</form>
