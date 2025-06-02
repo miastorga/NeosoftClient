@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Roles, RolesService } from '../../services/roles/roles.service';
@@ -11,9 +11,11 @@ import { AddRolesFormComponent } from '../../components/add-roles-form/add-roles
   styleUrl: './roles.component.css'
 })
 export class RolesComponent implements OnInit {
+
   displayedColumns: string[] = ['nombre', 'acciones'];
   rolesSignal = signal<Roles[]>([])
   rolesService = inject(RolesService)
+
 
   ngOnInit(): void {
     this.loadRoles()
